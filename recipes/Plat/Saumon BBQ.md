@@ -1,6 +1,6 @@
 # Saumon BBQ, Haricots & Patates Douces Rôtis
 
-> ⏱️ Temps de préparation : 4 min | 🍳 Cuisson : 30 min | 👥 4 personnes
+> ⏱️ Temps de préparation : 5 min | 🍳 Cuisson : 42 min | 👥 4 personnes
 
 ## Ingrédients
 
