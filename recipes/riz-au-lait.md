@@ -1,13 +1,13 @@
 # Riz au Lait Onctueux
----
+
 > ⏱️ Temps de préparation : 10 min | 🍳 Cuisson : 40 min
----
+
 ## Ingrédients
 * 100g de riz rond
 * 1L de lait entier
 * 70g de sucre
 * 1 gousse de vanille
----
+
 ## Préparation
 1. Rincer le riz à l'eau froide.
 2. Faire bouillir le lait avec la vanille.
