@@ -20,12 +20,12 @@
 
 ## Préparation
 
-1. Mettre 60 grammes de comte coupes en morceaux dans le Thermomix et melanger 5 sec/vitesse 6.
-2. Transvaser le contenu du Thermomix dans un recipient puis reserver.
-3. Mettre 120 grammes de champignons de paris bruns coupes en deux dans le Thermomix et melanger 3 sec/vitesse 4.
-4. Transvaser le contenu du Thermomix dans le Varoma puis reserver.
-5. Mettre 30 grammes d'echalotes epluchees dans le Thermomix et melanger 5 sec/vitesse 7.
-6. Ajouter 30 grammes de vin blanc dans le Thermomix et rissoler 2 min/120C/Q/vitesse 1 sans le gobelet doseur.
+1. Mettre 60 grammes de comte coupes en morceaux dans le robot et melanger 5 sec/vitesse 6.
+2. Transvaser le contenu du robot dans un recipient puis reserver.
+3. Mettre 120 grammes de champignons de paris bruns coupes en deux dans le robot et melanger 3 sec/vitesse 4.
+4. Transvaser le contenu du robot dans le grand panier vapeur puis reserver.
+5. Mettre 30 grammes d'echalotes epluchees dans le robot et melanger 5 sec/vitesse 7.
+6. Ajouter 30 grammes de vin blanc dans le robot et rissoler 2 min/120C/Q/vitesse 1 sans le gobelet doseur.
 7. Ajouter le Varoma.
 8. Cuire 10 min/Varoma/Q/vitesse 2.5 puis retirer le varoma.
 9. Retirer le panier de cuisson.
