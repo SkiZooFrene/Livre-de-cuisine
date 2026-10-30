@@ -26,14 +26,17 @@
 4. Transvaser le contenu du robot dans le grand panier vapeur puis reserver.
 5. Mettre 30 grammes d'echalotes epluchees dans le robot et melanger 5 sec/vitesse 7.
 6. Ajouter 30 grammes de vin blanc dans le robot et rissoler 2 min/120C/Q/vitesse 1 sans le gobelet doseur.
-7. Ajouter le Varoma.
-8. Cuire 10 min/Varoma/Q/vitesse 2.5 puis retirer le varoma.
-9. Retirer le panier de cuisson.
-10. Transferer la dinde dans le bol de mixage avec la sauce.
-11. Ajouter 2 brins de persil frais (les feuilles seulement) et ciseles dans le Thermomix et melanger 3 sec/Q/vitesse 4.
-12. Ajouter le fromage reserve et les champignons.
-13. Mélanger 3 sec//vitesse 2.5.
-14. Transvaser le contenu du Thermomix dans un recipient puis reserver.
-15. Faire cuire des pâtes selon les instruction du pâquet
-16. Mélangez les pates et la sauce
-17. C'est Prêt !
+7. Ajouter 30 grammes de beurre demi-sel, ¼ cuillère à café de poivre, 200 grammes de lait demi-écrémé, 40 grammes d'eau, 1 cube de bouillon de volaille et 35 grammes de farine dans le robot.
+8. Ajoutez le panier cuisson.
+9. Mettre 180 grammes d'escalopes de dinde coupé.
+10. Ajouter le grand panier vapeur.
+11. Cuire 10 min/120°C/Q/vitesse 2.5 puis retirer le grand panier vapeur.
+12. Retirer le panier de cuisson.
+13. Transférer la dinde dans le bol de mixage avec la sauce.
+14. Ajouter 2 brins de persil frais (les feuilles seulement) et ciselés dans le robot et mélanger 3 sec/Q/vitesse 4.
+15. Ajouter le fromage réservé et les champignons.
+16. Mélanger 3 sec/Q/vitesse 2.5.
+17. Transvaser le contenu du robot dans un récipient puis réserver.
+18. Faire cuire des pâtes selon les instruction du pâquet
+19. Mélangez les pates et la sauce
+20. C'est Prêt !
