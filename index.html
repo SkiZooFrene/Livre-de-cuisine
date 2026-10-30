@@ -1,34 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <style>
-  /* Force de vrais espaces verticaux dans le contenu de la recette */
-  #detail-content p, #detail-content ul, #detail-content ol, #detail-content blockquote {
-    margin-bottom: 1.5rem !important;
-  }
-  #detail-content h1 {
-    font-size: 1.875rem !important;
-    font-weight: bold !important;
-    margin-bottom: 1rem !important;
-  }
-  #detail-content h2 {
-    font-size: 1.25rem !important;
-    font-weight: bold !important;
-    margin-top: 2rem !important;
-    margin-bottom: 0.75rem !important;
-    color: #065f46 !important;
-  }
-  #detail-content li {
-    margin-bottom: 0.5rem !important;
-  }
-  #detail-content ul {
-    list-style-type: disc !important;
-    padding-left: 1.5rem !important;
-  }
-  #detail-content ol {
-    list-style-type: decimal !important;
-    padding-left: 1.5rem !important;
-  }
-</style>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,13 +7,41 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    #detail-content p, #detail-content ul, #detail-content ol, #detail-content blockquote {
+      margin-bottom: 1.5rem !important;
+    }
+    #detail-content h1 {
+      font-size: 1.875rem !important;
+      font-weight: bold !important;
+      margin-bottom: 1rem !important;
+    }
+    #detail-content h2 {
+      font-size: 1.25rem !important;
+      font-weight: bold !important;
+      margin-top: 2rem !important;
+      margin-bottom: 0.75rem !important;
+      color: #065f46 !important;
+    }
+    #detail-content li {
+      margin-bottom: 0.5rem !important;
+    }
+    #detail-content ul {
+      list-style-type: disc !important;
+      padding-left: 1.5rem !important;
+    }
+    #detail-content ol {
+      list-style-type: decimal !important;
+      padding-left: 1.5rem !important;
+    }
+  </style>
 </head>
 <body class="bg-amber-50/40 text-stone-800 min-h-screen flex flex-col font-sans">
 
   <!-- En-tête -->
   <header class="bg-emerald-800 text-white shadow-md sticky top-0 z-10">
     <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <h1 class="text-2xl font-bold flex items-center gap-2 cursor-pointer" onclick="showCatalog()">
+      <h1 class="text-2xl font-bold flex items-center gap-2 cursor-pointer" onclick="showHome()">
         <i class="fa-solid font-bold fa-utensils"></i> Mon Carnet Gourmand
       </h1>
       <div class="relative w-full sm:w-72" id="search-container">
@@ -56,17 +55,33 @@
   <!-- Contenu Principal -->
   <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
     
-    <!-- Grille de cartes de recettes -->
-    <div id="recipe-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <p class="col-span-full text-center text-stone-500 py-12">Chargement de vos délicieuses recettes...</p>
+    <!-- Bouton de retour / Fil d'Ariane -->
+    <div id="breadcrumb" class="hidden mb-6">
+      <button onclick="showHome()" class="inline-flex items-center gap-2 text-emerald-700 font-semibold hover:underline bg-white px-4 py-2 rounded-xl shadow-sm border border-stone-200">
+        <i class="fa-solid fa-arrow-left"><span>&nbsp;</span></i> Retour aux catégories
+      </button>
+    </div>
+
+    <!-- Vue Accueil : Grille des Catégories -->
+    <div id="category-view">
+      <h2 class="text-xl font-bold text-stone-700 mb-6">Choisissez une catégorie</h2>
+      <div id="category-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <p class="col-span-full text-center text-stone-500 py-12">Chargement des catégories...</p>
+      </div>
+    </div>
+
+    <!-- Vue Liste des Recettes d'une catégorie -->
+    <div id="recipe-list-view" class="hidden">
+      <h2 id="category-title" class="text-2xl font-bold text-stone-800 mb-6 capitalize"></h2>
+      <div id="recipe-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </div>
 
     <!-- Vue détaillée d'une recette -->
     <div id="recipe-detail" class="hidden bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-stone-200 max-w-3xl mx-auto">
-      <button onclick="showCatalog()" class="mb-6 inline-flex items-center gap-2 text-emerald-700 font-semibold hover:underline">
-        <i class="fa-solid fa-arrow-left"></i> Retour aux recettes
+      <button onclick="backToCategory()" class="mb-6 inline-flex items-center gap-2 text-emerald-700 font-semibold hover:underline">
+        <i class="fa-solid fa-arrow-left"></i> Retour à la liste
       </button>
-     <div id="detail-content" class="text-stone-700"></div>
+      <div id="detail-content"></div>
     </div>
 
   </main>
@@ -77,10 +92,11 @@
 
   <script>
     // ⚠️ Remplace par ton pseudo GitHub et le nom exact de ton dépôt
-    const GITHUB_USER = "SkiZooFrene";
+    const GITHUB_USER = "TON_PSEUDO_GITHUB";
     const GITHUB_REPO = "livre-de-cuisine";
     
-    let allRecipes = [];
+    let categoriesData = {};
+    let currentCategory = null;
 
     async function loadRecipes() {
       const apiUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/recipes`;
@@ -88,50 +104,100 @@
       try {
         const response = await fetch(apiUrl);
         if (!response.ok) throw new Error("Dossier recipes introuvable");
-        const files = await response.json();
+        const items = await response.json();
         
-        const markdownFiles = files.filter(file => file.name.endsWith('.md'));
-        allRecipes = [];
+        categoriesData = {};
 
-        for (let file of markdownFiles) {
-          const res = await fetch(file.download_url);
-          const text = await res.text();
-          
-          const titleMatch = text.match(/^#\s+(.*)$/m);
-          const title = titleMatch ? titleMatch[1] : file.name.replace('.md', '');
-          
-          allRecipes.push({
-            title: title,
-            file: file.path,
-            content: text,
-            name: file.name
-          });
+        // On parcourt les éléments du dossier recipes/
+        for (let item of items) {
+          if (item.type === "dir") {
+            // C'est un sous-dossier (ex: desserts, plats)
+            const catName = item.name;
+            categoriesData[catName] = [];
+
+            const subResponse = await fetch(item.url);
+            const subFiles = await subResponse.json();
+            const mdFiles = subFiles.filter(f => f.name.endsWith('.md'));
+
+            for (let file of mdFiles) {
+              const res = await fetch(file.download_url);
+              const text = await res.text();
+              const titleMatch = text.match(/^#\s+(.*)$/m);
+              const title = titleMatch ? titleMatch[1] : file.name.replace('.md', '');
+
+              categoriesData[catName].push({
+                title: title,
+                file: file.path,
+                content: text,
+                name: file.name
+              });
+            }
+          }
         }
 
-        displayRecipes(allRecipes);
+        displayCategories();
       } catch (err) {
         console.error(err);
-        document.getElementById('recipe-grid').innerHTML = `
+        document.getElementById('category-grid').innerHTML = `
           <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-stone-200 p-8">
-            <p class="text-stone-700 font-semibold mb-2">Presque prêt !</p>
-            <p class="text-stone-500 text-sm">Le dossier <code class="bg-stone-100 px-2 py-1 rounded text-emerald-700">recipes/</code> n'existe pas encore ou ton pseudo GitHub dans le code est incorrect.</p>
+            <p class="text-stone-700 font-semibold mb-2">Structure des dossiers requise</p>
+            <p class="text-stone-500 text-sm">Assure-toi d'avoir créé un dossier <code class="bg-stone-100 px-2 py-1 rounded text-emerald-700">recipes/</code> sur GitHub contenant des sous-dossiers (ex: <code class="bg-stone-100 px-2 py-1 rounded text-emerald-700">recipes/desserts/</code>).</p>
           </div>`;
       }
+    }
+
+    // Afficher les cartes de catégories
+    function displayCategories() {
+      const grid = document.getElementById('category-grid');
+      grid.innerHTML = '';
+
+      const keys = Object.keys(categoriesData);
+      if (keys.length === 0) {
+        grid.innerHTML = `<p class="col-span-full text-center text-stone-500 py-12">Aucun sous-dossier de catégorie trouvé dans recipes/.</p>`;
+        return;
+      }
+
+      keys.forEach(cat => {
+        const count = categoriesData[cat].length;
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 cursor-pointer flex flex-col p-6";
+        card.onclick = () => openCategory(cat);
+
+        card.innerHTML = `
+          <div class="flex items-center gap-4 mb-4">
+            <span class="bg-emerald-100 text-emerald-800 p-4 rounded-2xl text-2xl">
+              <i class="fa-solid fa-folder-open"></i>
+            </span>
+            <div>
+              <h2 class="text-xl font-bold text-stone-800 capitalize">${cat}</h2>
+              <p class="text-stone-400 text-xs">${count} recette${count > 1 ? 's' : ''}</p>
+            </div>
+          </div>
+          <span class="text-emerald-700 text-sm font-semibold mt-auto flex items-center gap-2">Voir les recettes <i class="fa-solid fa-arrow-right text-xs"></i></span>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Ouvrir une catégorie spécifique
+    function openCategory(catName) {
+      currentCategory = catName;
+      document.getElementById('category-view').classList.add('hidden');
+      document.getElementById('recipe-list-view').classList.remove('hidden');
+      document.getElementById('breadcrumb').classList.remove('hidden');
+      document.getElementById('category-title').innerText = `Catégorie : ${catName}`;
+
+      displayRecipes(categoriesData[catName]);
     }
 
     function displayRecipes(recipes) {
       const grid = document.getElementById('recipe-grid');
       grid.innerHTML = '';
 
-      if (recipes.length === 0) {
-        grid.innerHTML = `<p class="col-span-full text-center text-stone-500 py-12">Aucune recette pour le moment. Crée ton premier fichier .md dans le dossier recipes/</p>`;
-        return;
-      }
-
       recipes.forEach(r => {
         const card = document.createElement('div');
         card.className = "bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition border border-stone-200 cursor-pointer flex flex-col p-6";
-        card.onclick = () => openRecipe(r.file);
+        card.onclick = () => openRecipe(r);
 
         card.innerHTML = `
           <div class="flex items-center gap-3 mb-3">
@@ -146,29 +212,55 @@
       });
     }
 
-    function openRecipe(filePath) {
-      fetch(`https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/${filePath}`)
-        .then(res => res.text())
-        .then(mdText => {
-          document.getElementById('recipe-grid').classList.add('hidden');
-          document.getElementById('search-container').classList.add('hidden');
-          
-          const detail = document.getElementById('recipe-detail');
-          document.getElementById('detail-content').innerHTML = marked.parse(mdText);
-          detail.classList.remove('hidden');
-          window.scrollTo(0, 0);
-        });
+    // Ouvrir une recette
+    function openRecipe(recipe) {
+      document.getElementById('recipe-list-view').classList.add('hidden');
+      document.getElementById('breadcrumb').classList.add('hidden');
+      document.getElementById('search-container').classList.add('hidden');
+      
+      const detail = document.getElementById('recipe-detail');
+      document.getElementById('detail-content').innerHTML = marked.parse(recipe.content);
+      detail.classList.remove('hidden');
+      window.scrollTo(0, 0);
     }
 
-    function showCatalog() {
+    // Retour à l'accueil (catégories)
+    function showHome() {
+      currentCategory = null;
       document.getElementById('recipe-detail').classList.add('hidden');
-      document.getElementById('recipe-grid').classList.remove('hidden');
+      document.getElementById('recipe-list-view').classList.add('hidden');
+      document.getElementById('breadcrumb').classList.add('hidden');
       document.getElementById('search-container').classList.remove('hidden');
+      document.getElementById('category-view').classList.remove('hidden');
     }
 
+    // Retour à la liste de la catégorie en cours
+    function backToCategory() {
+      document.getElementById('recipe-detail').classList.add('hidden');
+      document.getElementById('search-container').classList.remove('hidden');
+      openCategory(currentCategory);
+    }
+
+    // Barre de recherche globale
     document.getElementById('search').addEventListener('input', (e) => {
       const query = e.target.value.toLowerCase();
+      if (!query) {
+        showHome();
+        return;
+      }
+
+      // Rassembler toutes les recettes de toutes les catégories
+      let allRecipes = [];
+      Object.keys(categoriesData).forEach(cat => {
+        allRecipes = allRecipes.concat(categoriesData[cat]);
+      });
+
       const filtered = allRecipes.filter(r => r.title.toLowerCase().includes(query));
+      
+      document.getElementById('category-view').classList.add('hidden');
+      document.getElementById('recipe-list-view').classList.remove('hidden');
+      document.getElementById('breadcrumb').classList.remove('hidden');
+      document.getElementById('category-title').innerText = `Résultats de recherche ("${query}")`;
       displayRecipes(filtered);
     });
 
