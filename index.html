@@ -1,5 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <style>
+  /* Force de vrais espaces verticaux dans le contenu de la recette */
+  #detail-content p, #detail-content ul, #detail-content ol, #detail-content blockquote {
+    margin-bottom: 1.5rem !important;
+  }
+  #detail-content h1 {
+    font-size: 1.875rem !important;
+    font-weight: bold !important;
+    margin-bottom: 1rem !important;
+  }
+  #detail-content h2 {
+    font-size: 1.25rem !important;
+    font-weight: bold !important;
+    margin-top: 2rem !important;
+    margin-bottom: 0.75rem !important;
+    color: #065f46 !important;
+  }
+  #detail-content li {
+    margin-bottom: 0.5rem !important;
+  }
+  #detail-content ul {
+    list-style-type: disc !important;
+    padding-left: 1.5rem !important;
+  }
+  #detail-content ol {
+    list-style-type: decimal !important;
+    padding-left: 1.5rem !important;
+  }
+</style>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -37,7 +66,7 @@
       <button onclick="showCatalog()" class="mb-6 inline-flex items-center gap-2 text-emerald-700 font-semibold hover:underline">
         <i class="fa-solid fa-arrow-left"></i> Retour aux recettes
       </button>
-     <div id="detail-content" class="prose max-w-none prose-emerald space-y-6 prose-h1:text-3xl prose-h1:mb-4 prose-h2:text-xl prose-h2:mt-8 prose-h2:mb-3 prose-ul:list-disc prose-ul:pl-5 prose-ol:list-decimal prose-ol:pl-5 prose-li:my-2"></div>
+     <div id="detail-content" class="text-stone-700"></div>
     </div>
 
   </main>
