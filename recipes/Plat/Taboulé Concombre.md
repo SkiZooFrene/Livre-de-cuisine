@@ -17,7 +17,7 @@
 
 ## Préparation
 
-1. Dans un saladier, verser la semoule avec un filet d'huile d'olive, du sel et du poivre. Ajouter de l'eau bouillante à hauteur (ou selon les indications du paquet), couvrir et laisser gonfler pendant 6 minutes. Égrener ensuite la semoule à l'aide d'une fourchette.
+1. Dans un saladier, verser la semoule et les raisins secs avec un filet d'huile d'olive, du sel et du poivre. Ajouter de l'eau bouillante à hauteur (ou selon les indications du paquet), couvrir et laisser gonfler pendant 6 minutes. Égrener ensuite la semoule à l'aide d'une fourchette.
 
 2. Laver et couper le concombre en petits dés réguliers.
 
