@@ -7,17 +7,16 @@
 * 4 escalopes de poulet
 * 160g de fromage ail & fines herbes (type Boursin)
 * 8 tranches de lard fumé
-* 4 pommes de terre moyennes
-* Huile d'olive
-* Sel et poivre
+* 800g de pommes de terre
+* 400g de haricots verts
 
 ---
 
 ## Préparation
 
-1. Préchauffer le four à 180°C.
+1. Préchauffer le four à 200°C.
 
-2. Éplucher les pommes de terre et les couper en dés ou en morceaux réguliers. Les disposer dans un plat allant au four, ajouter un filet d'huile d'olive, du sel et du poivre, puis mélanger. Enfourner pour une première cuisson de 20 minutes.
+2. Couper les pommes de terre en dés ou en morceaux réguliers. Les disposer avec les haricots vert dans un plat allant au four, ajouter un filet d'huile d'olive, du sel et du poivre, puis mélanger. Enfourner pour une première cuisson de 30 minutes.
 
 3. Pendant ce temps, préparer les escalopes de poulet : creuser une fente sur le côté de chaque escalope pour former une poche (sans la traverser complètement).
 
@@ -25,8 +24,8 @@
 
 5. Enrouler chaque escalope farcie avec 2 tranches de lard fumé pour bien maintenir le tout fermé.
 
-6. Au bout des 20 minutes, sortir le plat de pommes de terre du four, placer les escalopes de poulet farcies au milieu des pommes de terre.
+6. Au bout des 35 minutes, sortir le plat de pommes de terre du four, placer les escalopes de poulet farcies au milieu des pommes de terre.
 
-7. Remettre le tout au four pour 35 minutes supplémentaires de cuisson (jusqu'à ce que le poulet soit bien cuit à cœur et le lard croustillant).
+7. Remettre le tout au four pour 20-25 minutes supplémentaires de cuisson (jusqu'à ce que le poulet soit bien cuit à cœur et le lard croustillant).
 
 8. Servir bien chaud directement dans les assiettes !
